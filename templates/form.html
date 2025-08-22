@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Cargar relevamiento</h1>
+  <form action="{{ url_for('guardar') }}" method="post" class="card">
+    <label>Operador*:
+      <input type="text" name="operador" value="{{ (data.operador if data else '') }}" required placeholder="Nombre y apellido">
+    </label>
+
+    <label>Ubicación*:
+      <input type="text" name="ubicacion" value="{{ (data.ubicacion if data else '') }}" required placeholder="Ej. Lote 5 - Campo Norte">
+    </label>
+
+    <label>Proyecto*:
+      <input type="text" name="proyecto" value="{{ (data.proyecto if data else '') }}" required placeholder="Ej. Riego por goteo - Fase 2">
+    </label>
+
+    <label>Observaciones:
+      <textarea name="observaciones" rows="6" placeholder="Notas, hallazgos, medidas, etc.">{{ (data.observaciones if data else '') }}</textarea>
+    </label>
+
+    <div class="actions">
+      <button type="submit">Guardar y generar PDF</button>
+    </div>
+  </form>
+{% endblock %}

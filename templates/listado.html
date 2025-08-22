@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Listado de relevamientos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Operador</th>
+        <th>Proyecto</th>
+        <th>Ubicación</th>
+        <th>PDF</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for f in filas %}
+      <tr>
+        <td>{{ f.id }}</td>
+        <td>{{ f.fecha }}</td>
+        <td>{{ f.operador }}</td>
+        <td>{{ f.proyecto }}</td>
+        <td>{{ f.ubicacion }}</td>
+        <td><a href="{{ url_for('descargar', rid=f.id) }}">Descargar</a></td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="6">Sin registros aún.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
